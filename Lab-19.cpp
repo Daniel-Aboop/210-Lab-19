@@ -1,7 +1,9 @@
 // COMSC-210 | Lab 19 | Daniel Santisteban
 // IDE used: VS Code
+
 #include <iostream>
 #include <vector>
+#include <string>
 #include <fstream>
 #include <random>
 using namespace std;
@@ -28,14 +30,34 @@ class Movie{
     string getmovietitle(){
         return this->movietitle;
     }
-    moviedata* getmoviedata
+    moviedata* getmoviedata(){
+        return this->head;
+    }
 };
 
 int main(){
+    ifstream file("C:\\Users\\hope4\\Desktop\\COMSC 210 Work\\210-Lab-19\\Text.txt");
+    if(!file){
+		cout<<"error opening file"<<endl;
+		return 1;
+	}
+	else{
+		cout<<"file opened"<<endl;
+	}
+	cout<<endl;
     vector<Movie> list;
+    string line;
+    
+    while(getline(file,line)){
+
+    }
     cout<<"some shit man"<<endl;
+    
+
+
 
     return 0;
+    file.close();
 }
 //Function to read file
 
