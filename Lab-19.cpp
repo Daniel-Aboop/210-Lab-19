@@ -1,8 +1,9 @@
-// COMSC-210 | Lab 18 | Daniel Santisteban
+// COMSC-210 | Lab 19 | Daniel Santisteban
 // IDE used: VS Code
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <random>
 using namespace std;
 
 struct moviedata{
@@ -17,15 +18,30 @@ class Movie{
     private:
     string movietitle;
     moviedata* head = nullptr;
-
+    public:
+    void setmovietitle(string title){
+        this->movietitle=title;
+    }
+    void setmoviedata(double rating,string comment){
+        this->head=choice2(head,rating,comment);
+    }
+    string getmovietitle(){
+        return this->movietitle;
+    }
+    moviedata* getmoviedata
 };
 
 int main(){
     vector<Movie> list;
-
+    cout<<"some shit man"<<endl;
 
     return 0;
 }
+//Function to read file
+
+
+
+//Functions for linked list.
 moviedata* choice2(moviedata *head,double rating,const string& comment){
     moviedata* newNode = new moviedata{rating,comment,nullptr};
     //if this is the first thing inside of our list it will become the new head.
@@ -38,4 +54,22 @@ moviedata* choice2(moviedata *head,double rating,const string& comment){
     }
     current->next=newNode;
     return head;
+}
+void output(moviedata * head){
+    if(!head){
+        cout<<"Empty list.\n";
+        return;
+    }
+    int count = 1;
+    double avg=0;
+    moviedata * current = head;
+    cout<<"Outputting all reviews:"<<endl;
+    while (current) {
+        cout<<"> Review #"<<count++<<": "<< current->rating<<": "<<current->comment<<endl;
+        avg+=current->rating;
+        
+        current = current->next;
+    }
+    // to find the average it would be 2, so since it loops 1 more time for nullptr i did -1 to make sure its okay for average
+    cout<<"> Average: "<<avg/(count-1)<<endl;
 }
