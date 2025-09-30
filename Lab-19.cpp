@@ -6,6 +6,9 @@
 #include <string>
 #include <fstream>
 #include <random>
+#include <ctime>
+#include <iomanip>
+
 using namespace std;
 
 struct moviedata{
@@ -36,6 +39,7 @@ class Movie{
 };
 
 int main(){
+    srand(time(0));
     ifstream file("C:\\Users\\hope4\\Desktop\\COMSC 210 Work\\210-Lab-19\\Text.txt");
     if(!file){
 		cout<<"error opening file"<<endl;
@@ -45,11 +49,17 @@ int main(){
 		cout<<"file opened"<<endl;
 	}
 	cout<<endl;
+
+
     vector<Movie> list;
     string line;
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_real_distribution<> dis(1.0, 5.0);
+    
     
     while(getline(file,line)){
-
+        cout<<fixed << setprecision(1)<<dis(gen)<<endl;
     }
     cout<<"some shit man"<<endl;
     
@@ -59,9 +69,6 @@ int main(){
     return 0;
     file.close();
 }
-//Function to read file
-
-
 
 //Functions for linked list.
 moviedata* choice2(moviedata *head,double rating,const string& comment){
