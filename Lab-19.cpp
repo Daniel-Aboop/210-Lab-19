@@ -62,10 +62,21 @@ int main(){
     
     string line;
     while(getline(file,line)){
-        cout<<fixed<<setprecision(1)<<randomNumber()<<endl;
-        
+        Movie temp;
+        string tempname;
+        cout<<"Enter a Movie title: ";
+        getline(cin,tempname);
+        temp.setmovietitle(tempname);
+        temp.setmoviedata(randomNumber(),line);
+        list.push_back(temp);
     }
-    
+    for(int i=0;i<SIZE;i++){
+        moviedata* temp;
+        string temp;
+        temp=list[i].getmoviedata();
+        cout<<temp.
+
+    }
 
 
     file.close();
