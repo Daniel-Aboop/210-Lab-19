@@ -6,7 +6,6 @@
 #include <string>
 #include <fstream>
 #include <random>
-#include <ctime>
 #include <iomanip>
 
 using namespace std;
@@ -16,8 +15,11 @@ struct moviedata{
     string comment;
     moviedata* next;
 };
+//Linked List Functions
 void output(moviedata *head);
 moviedata * choice2(moviedata *head,double rating,const string& comment);
+//Random Number Function
+double randomNumber();
 
 class Movie{
     private:
@@ -39,7 +41,7 @@ class Movie{
 };
 
 int main(){
-    srand(time(0));
+    vector<Movie> list;
     ifstream file("C:\\Users\\hope4\\Desktop\\COMSC 210 Work\\210-Lab-19\\Text.txt");
     if(!file){
 		cout<<"error opening file"<<endl;
@@ -49,26 +51,21 @@ int main(){
 		cout<<"file opened"<<endl;
 	}
 	cout<<endl;
-
-
-    vector<Movie> list;
     string line;
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_real_distribution<> dis(1.0, 5.0);
-    
     
     while(getline(file,line)){
-        cout<<fixed << setprecision(1)<<dis(gen)<<endl;
+        
+        cout<<fixed << setprecision(2)<<dis(gen)<<endl;
     }
-    cout<<"some shit man"<<endl;
     
 
 
-
-    return 0;
     file.close();
+    return 0;
 }
+//Function for random Number
+
+
 
 //Functions for linked list.
 moviedata* choice2(moviedata *head,double rating,const string& comment){
