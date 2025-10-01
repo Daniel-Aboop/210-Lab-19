@@ -52,10 +52,13 @@ int main(){
 	}
 	cout<<endl;
     string line;
-    
+    Movie Movie1;
+    list Movie2;
+    list Movie3;
+
     while(getline(file,line)){
+        cout<<fixed<<setprecision(1)<<randomNumber()<<endl;
         
-        cout<<fixed << setprecision(2)<<dis(gen)<<endl;
     }
     
 
@@ -64,7 +67,11 @@ int main(){
     return 0;
 }
 //Function for random Number
-
+double randomNumber(){
+    static mt19937 gen(static_cast<unsigned int>(time(nullptr))); 
+    static uniform_real_distribution<double> dis(1.0, 5.0);
+    return dis(gen);
+}
 
 
 //Functions for linked list.
