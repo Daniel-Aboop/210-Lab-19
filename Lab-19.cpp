@@ -64,18 +64,24 @@ int main(){
     while(getline(file,line)){
         Movie temp;
         string tempname;
+        string tempname2;
+        string tempname3;
         cout<<"Enter a Movie title: ";
         getline(cin,tempname);
+        getline(cin,tempname2);
+        getline(cin,tempname3);
         temp.setmovietitle(tempname);
         temp.setmoviedata(randomNumber(),line);
         list.push_back(temp);
     }
+
     for(int i=0;i<SIZE;i++){
         moviedata* temp;
-        string temp;
+        string temp1;
         temp=list[i].getmoviedata();
-        cout<<temp.
-
+        cout<<list[i].getmovietitle()<<endl;
+        output(temp);
+        cout<<endl;
     }
 
 
@@ -114,11 +120,11 @@ void output(moviedata * head){
     moviedata * current = head;
     cout<<"Outputting all reviews:"<<endl;
     while (current) {
-        cout<<"> Review #"<<count++<<": "<< current->rating<<": "<<current->comment<<endl;
+        cout<<"> Review #"<<count++<<": "<<fixed<<setprecision(1)<< current->rating<<": "<<current->comment<<endl;
         avg+=current->rating;
         
         current = current->next;
     }
     // to find the average it would be 2, so since it loops 1 more time for nullptr i did -1 to make sure its okay for average
-    cout<<"> Average: "<<avg/(count-1)<<endl;
+    
 }
