@@ -42,8 +42,6 @@ class Movie{
 
 const int SIZE=4;
 
-
-//C:\\Users\\hope4\\Desktop\\COMSC 210 Work\\210-Lab-19\\Text.txt
 int main(){
     vector<Movie> list;
     string filepath;
@@ -58,9 +56,6 @@ int main(){
 		cout<<"file opened"<<endl;
 	}
 	cout<<endl;
-
-    
-    
     for(int i=0;i<SIZE;i++){
         Movie temp;
         string tempname;
@@ -68,7 +63,6 @@ int main(){
         getline(file,line);
         getline(file,line2);
         getline(file,line3);
-
         cout<<"Enter a Movie title: ";
         getline(cin,tempname);
         temp.setmovietitle(tempname);
@@ -86,8 +80,6 @@ int main(){
         output(temp);
         cout<<endl;
     }
-
-
     file.close();
     return 0;
 }
@@ -97,7 +89,6 @@ double randomNumber(){
     static uniform_real_distribution<double> dis(1.0, 5.0);
     return dis(gen);
 }
-
 
 //Functions for linked list.
 moviedata* choice2(moviedata *head,double rating,const string& comment){
@@ -113,6 +104,7 @@ moviedata* choice2(moviedata *head,double rating,const string& comment){
     current->next=newNode;
     return head;
 }
+
 void output(moviedata * head){
     if(!head){
         cout<<"Empty list.\n";
@@ -125,9 +117,6 @@ void output(moviedata * head){
     while (current) {
         cout<<"> Review #"<<count++<<": "<<fixed<<setprecision(1)<< current->rating<<": "<<current->comment<<endl;
         avg+=current->rating;
-        
         current = current->next;
     }
-    // to find the average it would be 2, so since it loops 1 more time for nullptr i did -1 to make sure its okay for average
-    
 }
