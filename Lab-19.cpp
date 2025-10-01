@@ -40,9 +40,16 @@ class Movie{
     }
 };
 
+const int SIZE=4;
+
+
+//C:\\Users\\hope4\\Desktop\\COMSC 210 Work\\210-Lab-19\\Text.txt
 int main(){
     vector<Movie> list;
-    ifstream file("C:\\Users\\hope4\\Desktop\\COMSC 210 Work\\210-Lab-19\\Text.txt");
+    string filepath;
+    cout<<"Enter File Path: ";
+    getline(cin,filepath);
+    ifstream file(filepath);
     if(!file){
 		cout<<"error opening file"<<endl;
 		return 1;
@@ -51,11 +58,9 @@ int main(){
 		cout<<"file opened"<<endl;
 	}
 	cout<<endl;
-    string line;
-    Movie Movie1;
-    list Movie2;
-    list Movie3;
 
+    
+    string line;
     while(getline(file,line)){
         cout<<fixed<<setprecision(1)<<randomNumber()<<endl;
         
