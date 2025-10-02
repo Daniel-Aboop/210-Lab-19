@@ -18,7 +18,7 @@ struct moviedata{
 //Linked List Functions
 void output(moviedata *head);
 moviedata * choice2(moviedata *head,double rating,const string& comment);
-void deletelist(moviedata * head);
+void deletelist();
 //Random Number Function
 double randomNumber();
 
@@ -40,16 +40,25 @@ class Movie{
         return this->head;
     }
     //Forgot to add a function to clear up the memory used.
-    ~Movie(){
-        deletelist(head);
+    //Tried to use a deconstructor for this but it didnt work so I just used a void function to be called at the end of my code in main
+    void deletelist(){
+    moviedata * current = head;
+    while (current) {
+        head = current->next;
+        delete current;
+        current = head;
     }
+    head = nullptr;
+    }
+    
 };
 
 const int SIZE=4;
-
+//C:\\Users\\hope4\\Desktop\\COMSC 210 Work\\210-Lab-19\\Text.txt
 int main(){
     vector<Movie> list;
     string filepath;
+    cout<<endl;
     cout<<"Enter File Path: ";
     getline(cin,filepath);
     ifstream file(filepath);
@@ -77,15 +86,21 @@ int main(){
         list.push_back(temp);
     }
     cout<<endl;
+    
     for(int i=0;i<SIZE;i++){
         moviedata* temp;
         string temp1;
         temp=list[i].getmoviedata();
+        cout<<"Movie title: ";
         cout<<list[i].getmovietitle()<<endl;
         output(temp);
         cout<<endl;
     }
+    //Code for freeing up memory and closing file!
     file.close();
+    for(int i=0;i<SIZE;i++){
+        list[i].deletelist();
+    }
     return 0;
 }
 //Function for random Number
@@ -126,11 +141,11 @@ void output(moviedata * head){
     }
 }
 void deletelist(moviedata * head){
-  moviedata * current = head;
+    moviedata * current = head;
     while (current) {
         head = current->next;
         delete current;
         current = head;
     }
     head = nullptr;
-}
+    }
