@@ -18,6 +18,7 @@ struct moviedata{
 //Linked List Functions
 void output(moviedata *head);
 moviedata * choice2(moviedata *head,double rating,const string& comment);
+void deletelist(moviedata * head);
 //Random Number Function
 double randomNumber();
 
@@ -37,6 +38,10 @@ class Movie{
     }
     moviedata* getmoviedata(){
         return this->head;
+    }
+    //Forgot to add a function to clear up the memory used.
+    ~Movie(){
+        deletelist(head);
     }
 };
 
@@ -119,4 +124,13 @@ void output(moviedata * head){
         avg+=current->rating;
         current = current->next;
     }
+}
+void deletelist(moviedata * head){
+  moviedata * current = head;
+    while (current) {
+        head = current->next;
+        delete current;
+        current = head;
+    }
+    head = nullptr;
 }
